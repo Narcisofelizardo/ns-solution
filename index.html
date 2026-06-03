@@ -1,379 +1,250 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NS Solutions | Tecnologia, Automação e Resultados</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Tecnologia e Automação para o seu Negócio</title>
+    <!-- Tailwind CSS para estilização rápida -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #050914;
-            --text-color: #f0f4f8;
-            --primary-blue: #0066cc;
-            --light-blue: #00b4d8;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 15% 50%, rgba(0, 102, 204, 0.15), transparent 25%),
-                              radial-gradient(circle at 85% 30%, rgba(0, 180, 216, 0.15), transparent 25%);
-        }
-
-        /* Header / Navbar */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 9, 20, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .logo img {
-            height: 60px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--light-blue);
-        }
-
-        /* Botões */
-        .btn {
-            padding: 12px 28px;
-            background: linear-gradient(45deg, var(--primary-blue), var(--light-blue));
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 0 15px rgba(0, 180, 216, 0.4);
-            display: inline-block;
-        }
-
-        .btn:hover {
-            box-shadow: 0 0 25px rgba(0, 180, 216, 0.8);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
-            margin-top: 40px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, var(--light-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #aaa;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Seções Gerais */
-        section {
-            padding: 100px 50px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: var(--light-blue);
-        }
-
-        /* Serviços (Cards Glassmorphism) */
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: 0.4s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--light-blue);
-            box-shadow: 0 10px 30px rgba(0, 180, 216, 0.1);
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .service-card p {
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-
-        /* Sobre / Quem Somos */
-        .about-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1100px;
-            margin: 0 auto;
-            gap: 50px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            color: #bbb;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .about-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(0, 102, 204, 0.3);
-            display: block;
-            margin: 0 auto;
-            border: 2px solid var(--card-border);
-        }
-
-        /* Efeito de revelar ao rolar */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-in-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #03050a;
-            border-top: 1px solid var(--card-border);
-            color: #777;
-        }
-
-        /* Botão Flutuante do WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0px 0px 15px rgba(37, 211, 102, 0.5);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 25px rgba(37, 211, 102, 0.8);
-        }
-
-        /* Responsividade */
-                /* Responsividade */
-        @media (max-width: 768px) {
-            header { 
-                padding: 15px; 
-                flex-direction: column; 
-                gap: 15px; 
-                position: relative; /* Remove o cabeçalho fixo no celular para não roubar espaço */
-            }
-            nav ul { 
-                gap: 15px; 
-                flex-wrap: wrap; 
-                justify-content: center; 
-            }
-            .hero { 
-                height: auto; 
-                min-height: 70vh; 
-                margin-top: 20px; 
-                padding-top: 40px; 
-            }
-            .hero-content h1 { 
-                font-size: 2.2rem; /* Diminui um pouco a fonte no celular */
-            }
-            .about-container { 
-                flex-direction: column; 
-                text-align: center; 
-            }
-            section { 
-                padding: 60px 20px; 
-            }
-        }
-
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 antialiased">
 
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="NS Solutions Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#sobre">Quem Somos</a></li>
-            </ul>
-        </nav>
-        <a href="https://api.whatsapp.com/send?phone=5594991064043&text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20com%20a%20NS%20Solutions." class="btn" target="_blank">Fale Conosco</a>
-    </header>
-
-    <section id="inicio" class="hero">
-        <div class="hero-content reveal active">
-            <h1>Sistemas, Dados e Automação</h1>
-            <p>Transformamos desafios complexos em soluções tecnológicas inteligentes. Impulsione seu negócio com desenvolvimento sob medida e consultoria de alto nível.</p>
-            <a href="https://api.whatsapp.com/send?phone=5594991064043&text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20com%20a%20NS%20Solutions." class="btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">
+                <i class="fa-solid fa-code"></i> TechSolutions
+            </div>
+            <a href="#contato" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">
+                Falar com Consultor
             </a>
         </div>
-    </section>
+    </header>
 
-    <section id="servicos">
-        <h2 class="section-title reveal">Nossas Soluções</h2>
-        <div class="services-container">
-            <div class="service-card reveal">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Desenvolvimento Web</h3>
-                <p>Criação de sites modernos, responsivos e sistemas web completos sob medida para a necessidade da sua empresa.</p>
-            </div>
-            <div class="service-card reveal">
-                <i class="fas fa-cogs"></i>
-                <h3>Automação de Processos</h3>
-                <p>Especialista em Microsoft Power Platform. Automatize tarefas repetitivas, ganhe tempo e reduza falhas operacionais.</p>
-            </div>
-            <div class="service-card reveal">
-                <i class="fas fa-network-wired"></i>
-                <h3>Consultoria em TI</h3>
-                <p>Orientação estratégica para arquitetura de sistemas, integração de dados e adoção de novas tecnologias no seu negócio.</p>
+    <!-- 1. Hero Section -->
+    <section class="bg-slate-900 text-white pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                Tecnologia que Trabalha pelo Seu Negócio: Do Site à Automação Completa
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 mb-10">
+                Desenvolvemos sistemas sob medida, sites de alta performance e automações inteligentes usando o ecossistema Microsoft e IA. Diga adeus aos processos manuais.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contato" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300 shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i> Falar com um Especialista
+                </a>
+                <a href="#servicos" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300">
+                    Ver Soluções
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="sobre">
-        <div class="about-container">
-            <div class="about-image reveal">
-                <img src="perfil.jpg" alt="Especialista NS Solutions" onerror="this.src='https://via.placeholder.com/400x500/001a33/00b4d8?text=Sua+Foto+Aqui'">
-            </div>
-            <div class="about-text reveal">
-                <h2>Experiência que gera resultados.</h2>
-                <p>A <strong>NS Solutions</strong> nasceu da paixão por resolver problemas através da tecnologia. Com <strong>mais de 5 anos de experiência sólida</strong> no mercado, atuando no desenvolvimento e arquitetura de sistemas corporativos.</p>
-                <p>Nossa bagagem conta com atuação em grandes multinacionais. Atualmente, com experiência prática como Analista na Vale, trazemos o rigor, a escalabilidade e a segurança exigida por gigantes do mercado para dentro do seu projeto, seja ele qual for.</p>
-                <p>Nosso foco é um só: criar ferramentas e automações que façam o seu negócio faturar mais e gastar menos.</p>
-                <a href="https://api.whatsapp.com/send?phone=5594991064043&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria." class="btn" style="margin-top: 15px;" target="_blank">Agendar Consultoria</a>
+    <!-- 2. Problemas (Dores) -->
+    <section class="py-20 bg-white px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-slate-800">Sua empresa está crescendo, mas a operação ficou para trás?</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 bg-red-50 rounded-xl border border-red-100">
+                    <i class="fa-solid fa-hourglass-half text-3xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Processos Lentos</h3>
+                    <p class="text-gray-600">Sua equipe perde horas digitando dados repetitivos em sistemas que não se conectam.</p>
+                </div>
+                <div class="p-6 bg-red-50 rounded-xl border border-red-100">
+                    <i class="fa-solid fa-chart-pie text-3xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Decisões no Achismo</h3>
+                    <p class="text-gray-600">Falta de relatórios claros em tempo real. As planilhas já saíram do controle.</p>
+                </div>
+                <div class="p-6 bg-red-50 rounded-xl border border-red-100">
+                    <i class="fa-solid fa-globe text-3xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Presença Digital Fraca</h3>
+                    <p class="text-gray-600">Site lento ou desatualizado que não reflete o verdadeiro valor da sua empresa.</p>
+                </div>
+                <div class="p-6 bg-red-50 rounded-xl border border-red-100">
+                    <i class="fa-solid fa-robot text-3xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Gargalos Tecnológicos</h3>
+                    <p class="text-gray-600">Você precisa de IA e automação, mas não sabe por onde começar a implementar.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 NS Solutions. Todos os direitos reservados. | Desenvolvido com <i class="fas fa-heart" style="color: var(--primary-blue);"></i> e Muita Lógica.</p>
+    <!-- 3. Solução (Benefícios) -->
+    <section class="py-20 bg-blue-50 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Transformamos gargalos em vantagens competitivas</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 mt-1">
+                        <i class="fa-solid fa-circle-check text-2xl text-green-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Produtividade Máxima</h3>
+                        <p class="text-gray-700">O que levava horas agora é feito em segundos, sem erro humano, através de aplicativos personalizados.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 mt-1">
+                        <i class="fa-solid fa-circle-check text-2xl text-green-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Controle na Palma da Mão</h3>
+                        <p class="text-gray-700">Painéis de indicadores visuais e precisos (Dashboards) atualizados em tempo real para guiar suas decisões.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 mt-1">
+                        <i class="fa-solid fa-circle-check text-2xl text-green-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Vendas e Autoridade</h3>
+                        <p class="text-gray-700">Um site rápido e focado em conversão que trabalha como o seu melhor vendedor 24 horas por dia.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 mt-1">
+                        <i class="fa-solid fa-circle-check text-2xl text-green-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Inovação e Escala</h3>
+                        <p class="text-gray-700">Implementamos Inteligência Artificial de forma prática para sua empresa atender mais e gastar menos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Vitrine de Serviços -->
+    <section id="servicos" class="py-20 bg-white px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 text-slate-800">Nosso Arsenal Tecnológico</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-300">
+                    <i class="fa-solid fa-laptop-code text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Sistemas e Sites</h3>
+                    <p class="text-gray-600">Plataformas sob medida e sites corporativos otimizados para captura de clientes e alta performance.</p>
+                </div>
+                <div class="p-8 border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-300">
+                    <i class="fa-solid fa-chart-column text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Power BI</h3>
+                    <p class="text-gray-600">Transformamos dados bagunçados em painéis interativos. Saiba exatamente onde está seu lucro.</p>
+                </div>
+                <div class="p-8 border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-300">
+                    <i class="fa-solid fa-gears text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Power Apps & Automate</h3>
+                    <p class="text-gray-600">Aplicativos operacionais internos e automação de fluxos usando a tecnologia robusta da Microsoft.</p>
+                </div>
+                <div class="p-8 border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-300">
+                    <i class="fa-solid fa-brain text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Inteligência Artificial</h3>
+                    <p class="text-gray-600">Integração de IA para atendimento automatizado, análise de dados e otimização de rotinas.</p>
+                </div>
+                <div class="p-8 border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-300 md:col-span-2 text-center md:text-left flex flex-col md:flex-row items-center gap-6">
+                    <i class="fa-solid fa-handshake text-5xl text-blue-600"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Consultoria em Tecnologia</h3>
+                        <p class="text-gray-600">Apoiamos sua empresa na escolha e arquitetura das melhores soluções digitais para o seu momento atual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Jornada do Cliente -->
+    <section class="py-20 bg-slate-900 text-white px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Do primeiro contato ao piloto automático</h2>
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-2">Diagnóstico</h3>
+                    <p class="text-slate-400 text-sm">Entendemos seu cenário, dores e o que precisa ser resolvido.</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-2">Arquitetura</h3>
+                    <p class="text-slate-400 text-sm">Desenhamos a melhor solução técnica para sua operação.</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-2">Desenvolvimento</h3>
+                    <p class="text-slate-400 text-sm">Construímos sua solução com entregas parciais e ágeis.</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+                    <h3 class="text-xl font-bold mb-2">Implantação</h3>
+                    <p class="text-slate-400 text-sm">Colocamos a tecnologia para rodar e treinamos sua equipe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Captura Interativa -->
+    <section id="contato" class="py-20 bg-blue-600 px-4">
+        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">Qual é a prioridade da sua empresa hoje?</h2>
+            <p class="text-gray-600 mb-8">Escolha uma opção abaixo para falar diretamente comigo no WhatsApp com o seu diagnóstico inicial.</p>
+            
+            <div class="flex flex-col gap-4">
+                <a href="https://wa.me/5594991064043?text=Ol%C3%A1%21+Gostaria+de+falar+sobre+a+cria%C3%A7%C3%A3o+ou+reformula%C3%A7%C3%A3o+do+meu+Site." target="_blank" class="w-full bg-slate-50 hover:bg-green-50 border-2 border-slate-200 hover:border-green-500 text-slate-700 hover:text-green-700 font-semibold py-4 px-6 rounded-xl transition duration-300 flex items-center justify-between group">
+                    <span>Quero criar ou refazer meu Site</span>
+                    <i class="fa-brands fa-whatsapp text-2xl text-gray-400 group-hover:text-green-500 transition duration-300"></i>
+                </a>
+                
+                <a href="https://wa.me/5594991064043?text=Ol%C3%A1%21+Preciso+de+um+Sistema+Sob+Medida." target="_blank" class="w-full bg-slate-50 hover:bg-green-50 border-2 border-slate-200 hover:border-green-500 text-slate-700 hover:text-green-700 font-semibold py-4 px-6 rounded-xl transition duration-300 flex items-center justify-between group">
+                    <span>Preciso de um Sistema Sob Medida</span>
+                    <i class="fa-brands fa-whatsapp text-2xl text-gray-400 group-hover:text-green-500 transition duration-300"></i>
+                </a>
+
+                <a href="https://wa.me/5594991064043?text=Ol%C3%A1%21+Quero+automatizar+processos+e+criar+Relat%C3%B3rios+%28Power+Platform%29." target="_blank" class="w-full bg-slate-50 hover:bg-green-50 border-2 border-slate-200 hover:border-green-500 text-slate-700 hover:text-green-700 font-semibold py-4 px-6 rounded-xl transition duration-300 flex items-center justify-between group">
+                    <span>Quero automatizar processos e criar Relatórios (BI)</span>
+                    <i class="fa-brands fa-whatsapp text-2xl text-gray-400 group-hover:text-green-500 transition duration-300"></i>
+                </a>
+
+                <a href="https://wa.me/5594991064043?text=Ol%C3%A1%21+Preciso+de+Consultoria+ou+solu%C3%A7%C3%B5es+em+Intelig%C3%AAncia+Artificial." target="_blank" class="w-full bg-slate-50 hover:bg-green-50 border-2 border-slate-200 hover:border-green-500 text-slate-700 hover:text-green-700 font-semibold py-4 px-6 rounded-xl transition duration-300 flex items-center justify-between group">
+                    <span>Preciso de Consultoria / Inteligência Artificial</span>
+                    <i class="fa-brands fa-whatsapp text-2xl text-gray-400 group-hover:text-green-500 transition duration-300"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="py-20 bg-gray-50 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-slate-800">Dúvidas Frequentes</h2>
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Preciso ter licenças caras da Microsoft para usar os serviços?</h3>
+                    <p class="text-gray-600">Não necessariamente. Muitas empresas já possuem as licenças básicas do Microsoft 365 que permitem criar muita coisa sem custo extra. Nós analisamos seu cenário e orientamos sobre o que vale a pena.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Minha empresa é pequena, essas soluções servem para mim?</h3>
+                    <p class="text-gray-600">Sim! Nossas soluções são modulares. Podemos começar com um site profissional e uma automação simples, e evoluir o sistema conforme o seu negócio cresce.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Quanto tempo demora para um sistema ou site ficar pronto?</h3>
+                    <p class="text-gray-600">Varia conforme a complexidade. Sites institucionais podem ser entregues em poucas semanas, enquanto sistemas complexos e painéis de BI são divididos em etapas para que você veja o valor rapidamente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 TechSolutions. Todos os direitos reservados.</p>
+            <p>Desenvolvido com foco em resultados.</p>
+        </div>
     </footer>
 
-    <a href="https://api.whatsapp.com/send?phone=5594991064043&text=Ol%C3%A1!%20Estou%20no%20site%20da%20NS%20Solutions%20e%20preciso%20de%20atendimento." class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Para carregar os primeiros elementos
-    </script>
 </body>
 </html>
