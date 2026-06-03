@@ -256,13 +256,37 @@
         }
 
         /* Responsividade */
+                /* Responsividade */
         @media (max-width: 768px) {
-            header { padding: 20px; flex-direction: column; gap: 15px; }
-            nav ul { gap: 15px; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .about-container { flex-direction: column; text-align: center; }
-            section { padding: 60px 20px; }
+            header { 
+                padding: 15px; 
+                flex-direction: column; 
+                gap: 15px; 
+                position: relative; /* Remove o cabeçalho fixo no celular para não roubar espaço */
+            }
+            nav ul { 
+                gap: 15px; 
+                flex-wrap: wrap; 
+                justify-content: center; 
+            }
+            .hero { 
+                height: auto; 
+                min-height: 70vh; 
+                margin-top: 20px; 
+                padding-top: 40px; 
+            }
+            .hero-content h1 { 
+                font-size: 2.2rem; /* Diminui um pouco a fonte no celular */
+            }
+            .about-container { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            section { 
+                padding: 60px 20px; 
+            }
         }
+
     </style>
 </head>
 <body>
